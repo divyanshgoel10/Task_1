@@ -35,23 +35,23 @@
     </table>
 
     <script>
-        // Fetch data from the API
+        // Fetching data from the API
         fetch('https://s3.amazonaws.com/open-to-cors/assignment.json')
         .then(response => response.json())
         .then(data => {
-            // Extract products object from the data
+            // Extracting products object from the data
             const products = data.products;
 
-            // Convert products object to an array
+            // Converting products object to an array
             const productList = Object.keys(products).map(key => ({
             id: key,
             ...products[key]
             }));
 
-            // Sort the array by descending popularity
+            // Sorting the array by descending popularity
             productList.sort((a, b) => b.popularity - a.popularity);
 
-            // Display the sorted data in the table
+            // Displaying the sorted data in the table
             const tableBody = document.querySelector('#productTable tbody');
             productList.forEach(product => {
             const row = document.createElement('tr');
@@ -65,5 +65,6 @@
         })
         .catch(error => console.error('Error fetching data:', error));
     </script>
+
 </body>
 </html>
